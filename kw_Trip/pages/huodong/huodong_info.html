@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<span>活动详细</span>
+			<button id="btn_go">跳转</button>
+		</div>
+		<script >
+			mui.init();
+			mui.plusReady(function() {
+				mui(".mui-content").on("tap", "#btn_go", function() {
+					mui.toast("跳转");
+					var self = plus.webview.getWebviewById("/templates/commwv.html");
+					var sub = plus.webview.getWebviewById("/templates/commwv_sub.html");
+					console.log(JSON.stringify(self));
+					sub.loadURL("/pages/huodong/huodongdetail.html");
+					self.append(sub);
+					self.show();
+				});
+			})
+		</script>
+	</body>
+
+</html>

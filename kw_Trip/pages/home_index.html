@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+
+	</head>
+
+	<body>
+		<div class="mui-content" style="background-color: deepskyblue;">
+			<span>Index</span>
+			<button id="btn_go">跳转</button>
+		</div>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+			mui(".mui-content").on("tap", "#btn_go", function() {
+				mui.toast("跳转");
+				var self = plus.webview.getWebviewById("/templates/commwv.html");
+				var sub = plus.webview.getWebviewById("/templates/commwv_sub.html");
+				//				mui.fire(page, 'init', { 
+				//					title: "title"
+				//				});
+				console.log(JSON.stringify(self));
+				console.log(JSON.stringify(sub));
+				if (sub != null) {
+					sub.loadURL("/pages/huodong/huodong_info.html");
+					self.append(sub);
+					self.show();
+				} else {}
+			});
+		</script>
+	</body>
+
+</html>

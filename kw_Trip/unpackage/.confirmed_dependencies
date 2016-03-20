@@ -1,0 +1,84 @@
+{
+  "index.html": {
+    "resources": [
+      "js/base.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "pages/home_index.html"
+    ],
+    "refer": [
+      "pages/home_huodong.html",
+      "pages/home_index.html",
+      "templates/commwv.html",
+      "pages/huodong_info.html",
+      "templates/commwv_sub.html",
+      "pages/home_huodong_sub.html",
+      "pages/huodong/huodong_info.html",
+      "pages/huodong/huodongdetail.html"
+    ]
+  },
+  "pages/home_huodong.html": {
+    "resources": [
+      "pages/home_huodong_sub.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "pages/home_huodong_sub.html"
+    ]
+  },
+  "pages/home_huodong_sub.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "pages/home_index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "templates/commwv.html": {
+    "resources": [
+      "pages/huodong_info.html",
+      "pages/huodong/huodong_info.html"
+    ],
+    "refer": []
+  },
+  "templates/commwv_sub.html": {
+    "refer": [
+      "pages/huodong_info.html"
+    ],
+    "resources": []
+  },
+  "pages/huodong_info.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "pages/huodong/huodong_info.html": {
+    "resources": [
+      "/css/mui.min.css",
+      "/js/mui.min.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "pages/huodong/huodongdetail.html"
+    ],
+    "refer": []
+  },
+  "pages/huodong/huodongdetail.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  }
+}

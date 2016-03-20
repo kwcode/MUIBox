@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>驼铃网</title>
+		<meta charset="UTF-8">
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--<script type="text/javascript" src="js/base.js"></script>-->
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background: #5ab048;color:#FFFFFF;">
+			<div class=" mui-pull-right">
+				<a class="mui-icon  mui-icon-search"></a>
+				<a class="mui-icon  mui-icon-person"></a>
+			</div>
+
+			<h1 class="mui-title" id="title">驼铃户外</h1>
+		</header>
+
+		<div class="mui-content">
+			<!--页面初始化-->
+			<div class="mui-pull-top-pocket mui-block mui-visibility">
+				<div class="mui-pull">
+					<div class="mui-pull-loading mui-icon mui-spinner"></div>
+					<div class="mui-pull-caption">正在加载...</div>
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="/pages/home_index.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="/pages/home_huodong.html">
+				<span class="mui-icon mui-icon-navigate"></span>
+				<span class="mui-tab-label">活动</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon mui-icon-chatbubble"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">沟通</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-star"></span>
+				<span class="mui-tab-label">发现</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+	</body>
+
+	<script>
+		mui.init({
+			preloadPages: [{
+				url: "/templates/commwv.html",
+				id: "/templates/commwv.html"
+			}, {
+				url: "/templates/commwv_sub.html",
+				id: "/templates/commwv_sub.html",
+				styles: {
+					top: '45px',
+					bottom: '0px',
+					bounce: 'none',
+					scrollIndicator: 'none'
+				}
+			}]
+		});
+		var activeTab;
+		//首页需要显示的几个页面
+		//var subpages = ['/pages/home_index.html','/pages/home_huodong.html','/pages/home_index.html','/pages/home_index.html','/pages/home_index.html',];
+		var subpages = {
+			home: {
+				id: '/pages/home_index.html',
+				url: '/pages/home_index.html',
+				style: {
+					top: '45px',
+					bottom: '50px'
+				}
+			},
+			huodong: {
+				id: '/pages/home_huodong.html',
+				url: '/pages/home_huodong.html',
+				style: {
+					top: '45px',
+					bottom: '50px'
+				}
+			},
+			chat: {
+				id: '/pages/home_chat.html',
+				url: '/pages/home_chat.html',
+				style: {
+					top: '45px',
+					bottom: '50px'
+				}
+			},
+			find: {
+				id: '/pages/home_find.html',
+				url: '/pages/home_find.html',
+				style: {
+					top: '45px',
+					bottom: '50px'
+				}
+			},
+			user: {
+				id: '/pages/home_user.html',
+				url: '/pages/home_home_userindex.html',
+				style: {
+					top: '45px',
+					bottom: '50px'
+				}
+			}
+		}
+		mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				console.log(subpages.home.url);
+				var subpagehome = plus.webview.create(subpages.home.url, subpages.home.id, subpages.home.style);
+				self.append(subpagehome);
+				activeTab = subpages.home.url;
+				var subpagehuodong = plus.webview.create(subpages.huodong.url, subpages.huodong.id, subpages.huodong.style);
+				subpagehuodong.hide();
+				self.append(subpagehuodong);
+				//预加载一个模板
+				//				plus.webview.create("/templates/commwv.html", "/templates/commwv.html");
+				//				plus.webview.create("/templates/commwv_sub.html", "/templates/commwv_sub.html", {
+				//					top: '45px',
+				//					bottom: '50px'
+				//				});
+			})
+			//选项卡点击事件
+		var title = document.getElementById("title");
+		mui('.mui-bar-tab').on('tap', 'a', function(e) {
+			var targetTab = this.getAttribute('href');
+			console.log(targetTab);
+			if (targetTab == activeTab) {
+				return;
+			}
+			//更换标题
+			title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+			plus.webview.hide(activeTab);
+			plus.webview.show(targetTab, 'slide-in-right', 10);
+			//更改当前活跃的选项卡
+			activeTab = targetTab;
+		});
+	</script>
+
+</html>
